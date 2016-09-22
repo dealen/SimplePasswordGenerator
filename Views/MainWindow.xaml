@@ -1,0 +1,51 @@
+﻿<Window x:Class="PasswordGenerator.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordGenerator.ViewModels"
+        mc:Ignorable="d"
+        Title="Password generator" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" >
+    
+    
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">Długość hasła:</Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=PasswordParams.Length}" />
+        
+        <Label Grid.Row="1" Grid.Column="0">Czy stosować małe litery?</Label>
+        <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding Path=PasswordParams.AreLowerCaseCharsAllowed}" />
+
+        <Label Grid.Row="3" Grid.Column="0">Czy stosować wielkie litery?:</Label>
+        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding Path=PasswordParams.AreUppercaseCharsAllowed}" />
+
+        <Label Grid.Row="4" Grid.Column="0">Czy stosować numery?:</Label>
+        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding Path=PasswordParams.AreNumbersAllowed}" />
+
+        <Label Grid.Row="5" Grid.Column="0">Czy stosować znaki specjalne?</Label>
+        <CheckBox Grid.Row="5" Grid.Column="1" IsChecked="{Binding Path=PasswordParams.AreSpecialSignsAllowed}" />
+
+        <Button Grid.Row="6" Grid.Column="0" Content="Generate" Margin="4" Command="{Binding CommandGeneratePassword}" Grid.ColumnSpan="3"/>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="Password:" />
+        <TextBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Password}" IsReadOnly="True" TextAlignment="Center" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" />
+    </Grid>
+</Window>
